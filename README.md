@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to the Landdox Code Challenge :)
 
-## Available Scripts
+You have been invited to take the Landdox React Code Challenge. We are not worried about the completion of the challenge. We just want to see an example of your work and then talk about your code.
 
-In the project directory, you can run:
+We expect you to spend around ~2 hours on the challenge. Feel free to spend more or less depending on your progress and your satisfaction with the results.
 
-### `npm start`
+## First Steps
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. You should have received an email with your Landdox developer reviewer. Coordinate via email with them on the best time to review you project over a screen share. FYI there may be more than 1 Landdox employee joining the screen share.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2. Clone this Git repo. Do not fork it. We want to protect your work from prying eyes.
 
-### `npm test`
+3. Create a new repo under your GitHub username. If you want to make it private, go ahead. You can then invite a Landdox developer as a collaborator. Keeping the repo public is also ok.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Follow the directions on: [https://github.com/gitname/react-gh-pages](https://github.com/gitname/react-gh-pages) and add the ability to deploy the React app as a GitHub page.
 
-### `npm run build`
+5. You are now ready to do the code challenge.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- If you do not have a GitHub account or wish to use BitBucket or GitLab, go right ahead.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## A bit about the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* App was created using create-react-app.
+* We installed react-bootstrap for styling.
+* We added a git commit hook (using husky and lint-staged) that runs prettier for code formatting. If you have another linting solution, feel free to use that instead.
+* You can run the test with `npm run test`.
+* We added Font Awesome for icons and added an `Icon` component. You can use or make your own.
 
-### `npm run eject`
+## Code Challenge
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You will be coding a React component to handle the editing of tract ownerships. We already installed bootstrap for styling ([https://react-bootstrap.github.io/](https://react-bootstrap.github.io/)). We would rather see your React code vs CSS / design skills.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![](./component.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A tract can have many mineral interests.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![](./mineral_interest.png)
 
-## Learn More
+A mineral interest can have many NPRIs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./npri.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+With this component you should be able to:
 
-### Code Splitting
+- Add a mineral interest
+- Remove a mineral interest
+- Add a NPRI to a mineral interest
+- Remove a NPRI from a mineral interest
+- Edit the owner, interest, and lease information on a mineral interest
+- Edit the owner and interest on a NPRI
+- Every time you do any of the above actions, the `onChange` prop should be fired
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Any restrictions? Nope.
 
-### Analyzing the Bundle Size
+Want to use a class, go for it.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Want to use redux, go for it.
 
-### Making a Progressive Web App
+Want to use hooks, ... you guessed it. Go for it.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+The only restriction is that the tests should pass. And even with the tests feel free to add or modify the tests.
 
-### Advanced Configuration
+You can execute the tests using `npm run test`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+After you are done, don't forget to push your code up and deploy your GitHub page.
 
-### Deployment
+- If not on GitHub, then it is ok if you don't deploy. It would be nice if you found an alternative deployment solution. :)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Good luck and have fun!
