@@ -51,7 +51,15 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
           </Form.Group>
         </Col>
         <Col>
-          <Col>{status === 'new' ? ' ' : <Icon icon="remove" />}</Col>
+          <Col>
+            {status === 'new' ? (
+              ' '
+            ) : (
+              <Button data-testid={`mineralInterest-${tract.id}.remove`}>
+                <Icon icon="remove" />
+              </Button>
+            )}
+          </Col>
         </Col>
       </Row>
       {tract && tract.npris && tract.npris.length > 0
@@ -64,7 +72,9 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               <Col>{npri.interest}</Col>
               <Col>{npri.lease}</Col>
               <Col>
-                <Icon icon="remove" />
+                <Button data-testid={`npriRemove-${npri.id}`}>
+                  <Icon icon="remove" />
+                </Button>
               </Col>
             </Row>
           ))
@@ -83,6 +93,9 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
                   leaseFieldVal,
                   []
                 );
+                setOwnerFieldVal('');
+                setInterestFieldVal('');
+                setLeaseFieldVal('');
               }}
             >
               Add
