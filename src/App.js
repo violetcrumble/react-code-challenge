@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import uuidv4 from 'uuid/v4';
 
@@ -33,10 +33,11 @@ let result;
 
 function App() {
   const [tracts, setTracts] = useState(tractOwnerships);
+  // const [key, setKey] = useState(Math.random());
 
-  const addMineralInterest = mineralInterest => {
-    mineralInterest.id = uuidv4();
-    setTracts([...tractOwnerships, mineralInterest]);
+  const onChange = (id, owner, interest, lease, npris) => {
+    setTracts([...tractOwnerships, [{ id, owner, interest, lease, npris }]]);
+    // setKey(Math.random());
   };
 
   return (
@@ -52,7 +53,7 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <EditTractOwnership value={tracts} onChange={v => (result = v)} />
+          <EditTractOwnership value={tracts} onChange={onChange} />
         </Col>
       </Row>
     </Container>

@@ -42,17 +42,11 @@ const EditTractOwnership = ({ value = [], onChange }) => {
       {isAddNewMineralInterestShowing ? (
         <Card>
           <h3>Add New Mineral Interest</h3>
-          <MineralInterestItem status="new" />
-          <Row>
-            <Col>
-              <Button onClick={() => onChange(value)}>Add</Button>
-            </Col>
-            <Col>
-              <Button onClick={() => setIsAddNewMineralInterestShowing(false)}>
-                Cancel
-              </Button>
-            </Col>
-          </Row>
+          <MineralInterestItem
+            status="new"
+            onChange={onChange}
+            onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
+          />
         </Card>
       ) : (
         <Button onClick={() => setIsAddNewMineralInterestShowing(true)}>

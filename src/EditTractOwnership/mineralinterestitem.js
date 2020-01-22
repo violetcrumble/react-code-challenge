@@ -5,8 +5,9 @@ import Icon from '../Icon';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-const MineralInterestItem = ({ tract, status }) => {
+const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
   return (
     <Fragment>
       <Row
@@ -18,6 +19,7 @@ const MineralInterestItem = ({ tract, status }) => {
           <Form.Group>
             <Form.Control
               placeholder={tract && tract.owner ? tract.owner : 'owner'}
+              name="owner"
             />
           </Form.Group>
         </Col>
@@ -25,6 +27,7 @@ const MineralInterestItem = ({ tract, status }) => {
           <Form.Group>
             <Form.Control
               placeholder={tract && tract.interest ? tract.interst : 'interest'}
+              name="interest"
             />
           </Form.Group>
         </Col>
@@ -33,6 +36,7 @@ const MineralInterestItem = ({ tract, status }) => {
           <Form.Group>
             <Form.Control
               placeholder={tract && tract.lease ? tract.lease : 'lease'}
+              name="lease"
             />
           </Form.Group>
         </Col>
@@ -55,6 +59,23 @@ const MineralInterestItem = ({ tract, status }) => {
             </Row>
           ))
         : null}
+
+      {status === 'new' ? (
+        <Row>
+          <Col>
+            <Button
+              onClick={() =>
+                onChange(uuidv4(), 'Bonnie Mellott', 0.5, 'Lease', [])
+              }
+            >
+              Add
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={() => onCancelClick()}>Cancel</Button>
+          </Col>
+        </Row>
+      ) : null}
     </Fragment>
   );
 };
