@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useRef, useState, Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 import Icon from '../Icon';
 
@@ -8,6 +8,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
+  const [ownerFieldVal, setOwnerFieldVal] = useState('');
+  const [interestFieldVal, setInterestFieldVal] = useState('');
+  const [leaseFieldVal, setLeaseFieldVal] = useState('');
+
   return (
     <Fragment>
       <Row
@@ -20,6 +24,8 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             <Form.Control
               placeholder={tract && tract.owner ? tract.owner : 'owner'}
               name="owner"
+              value={ownerFieldVal}
+              onChange={e => setOwnerFieldVal(e.target.value)}
             />
           </Form.Group>
         </Col>
@@ -28,6 +34,8 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             <Form.Control
               placeholder={tract && tract.interest ? tract.interst : 'interest'}
               name="interest"
+              value={interestFieldVal}
+              onChange={e => setInterestFieldVal(e.target.value)}
             />
           </Form.Group>
         </Col>
@@ -37,6 +45,8 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             <Form.Control
               placeholder={tract && tract.lease ? tract.lease : 'lease'}
               name="lease"
+              value={leaseFieldVal}
+              onChange={e => setLeaseFieldVal(e.target.value)}
             />
           </Form.Group>
         </Col>
@@ -64,9 +74,16 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
         <Row>
           <Col>
             <Button
-              onClick={() =>
-                onChange(uuidv4(), 'Bonnie Mellott', 0.5, 'Lease', [])
-              }
+              onClick={() => {
+                //TODO: add actual NPRIs instead of empty array
+                onChange(
+                  uuidv4(),
+                  ownerFieldVal,
+                  interestFieldVal,
+                  leaseFieldVal,
+                  []
+                );
+              }}
             >
               Add
             </Button>

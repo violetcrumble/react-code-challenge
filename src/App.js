@@ -33,11 +33,9 @@ let result;
 
 function App() {
   const [tracts, setTracts] = useState(tractOwnerships);
-  // const [key, setKey] = useState(Math.random());
 
   const onChange = (id, owner, interest, lease, npris) => {
     setTracts([...tractOwnerships, [{ id, owner, interest, lease, npris }]]);
-    // setKey(Math.random());
   };
 
   return (
