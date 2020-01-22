@@ -2,6 +2,7 @@
   "name": "landdox-react-code-challenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://violetcrumble.github.io/react-code-challenge",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
