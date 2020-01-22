@@ -31,7 +31,7 @@ function App() {
   ]);
 
   const onChange = (id, owner, interest, lease, npris) => {
-    setTracts([...tracts, [{ id, owner, interest, lease, npris }]]);
+    setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
   };
 
   return (
