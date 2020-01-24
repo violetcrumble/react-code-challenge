@@ -1,11 +1,8 @@
 import React, { useState, Fragment } from 'react';
-// import uuidv4 from 'uuid/v4';
-// import Icon from '../Icon';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -30,7 +27,7 @@ const EditTractOwnership = ({ value = [], onChange }) => {
       {value.length > 0 ? (
         value.map(tract => (
           <Fragment key={tract.id}>
-            <MineralInterestItem tract={tract} />
+            <MineralInterestItem tract={tract} onChange={onChange} />
           </Fragment>
         ))
       ) : (

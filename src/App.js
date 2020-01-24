@@ -30,8 +30,19 @@ function App() {
     },
   ]);
 
-  const onChange = (id, owner, interest, lease, npris) => {
-    setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
+  const onChange = (action, id, owner, interest, lease, npris) => {
+    if (action === 'addMI') {
+      setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
+    }
+    if (action === 'removeMI') {
+      setTracts(tracts.filter(item => item.id !== id));
+      console.log('remove');
+      return tracts;
+    }
+    if (action === 'addNPRI') {
+    }
+    if (action === 'removeNPRI') {
+    }
   };
 
   return (

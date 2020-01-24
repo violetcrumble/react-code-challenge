@@ -2,6 +2,8 @@ import React, { useRef, useState, Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 import Icon from '../Icon';
 
+//this doesn't look as nice as importing a bunch of these in a single object
+//it's better performance wise, becuase it doesn't import the ENTIRE OBJECT
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -13,8 +15,9 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
   const [leaseFieldVal, setLeaseFieldVal] = useState('');
 
   return (
-    <Fragment>
+    <div>
       <Row
+        className="mineral-interest-item"
         data-testid={
           tract ? `mineralInterest-${tract.id}` : 'mineralInterestRowAdd'
         }
@@ -26,6 +29,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               name="owner"
               value={ownerFieldVal}
               onChange={e => setOwnerFieldVal(e.target.value)}
+              className="mineral-interest-owner"
             />
           </Form.Group>
         </Col>
@@ -36,6 +40,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               name="interest"
               value={interestFieldVal}
               onChange={e => setInterestFieldVal(e.target.value)}
+              className="mineral-interest-interest"
             />
           </Form.Group>
         </Col>
@@ -47,6 +52,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               name="lease"
               value={leaseFieldVal}
               onChange={e => setLeaseFieldVal(e.target.value)}
+              className="mineral-interest-lease"
             />
           </Form.Group>
         </Col>
@@ -55,7 +61,12 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             {status === 'new' ? (
               ' '
             ) : (
-              <Button data-testid={`mineralInterest-${tract.id}.remove`}>
+              <Button
+                data-testid={`mineralInterest-${tract.id}.remove`}
+                onClick={() => {
+                  onChange('removeMI', tract.id);
+                }}
+              >
                 <Icon icon="remove" />
               </Button>
             )}
@@ -85,8 +96,9 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
           <Col>
             <Button
               onClick={() => {
-                //TODO: add actual NPRIs instead of empty array
+                //TODO: add actual NPRIs instead of the empty array
                 onChange(
+                  'addMI',
                   uuidv4(),
                   ownerFieldVal,
                   interestFieldVal,
@@ -106,7 +118,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
           </Col>
         </Row>
       ) : null}
-    </Fragment>
+    </div>
   );
 };
 
