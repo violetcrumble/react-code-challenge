@@ -1,21 +1,25 @@
-import React, { useRef, useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 import Icon from '../Icon';
 
-//this doesn't look as nice as importing a bunch of these in a single object
-//it's better performance wise, becuase it doesn't import the ENTIRE OBJECT
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Card from 'react-bootstrap/Card';
+
+import NPRIItem from './npriitem';
 
 const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
   const [ownerFieldVal, setOwnerFieldVal] = useState('');
   const [interestFieldVal, setInterestFieldVal] = useState('');
   const [leaseFieldVal, setLeaseFieldVal] = useState('');
 
+  const [isAddNewNPRIShowing, setIsAddNewNPRIShowing] = useState(false);
+
   return (
-    <div>
+    <div style={{ borderBottom: 'dotted 1px gray', marginBottom: '20px' }}>
       <Row
         className="mineral-interest-item"
         data-testid={
@@ -35,13 +39,20 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
         </Col>
         <Col>
           <Form.Group>
-            <Form.Control
-              placeholder={tract && tract.interest ? tract.interst : 'interest'}
-              name="interest"
-              value={interestFieldVal}
-              onChange={e => setInterestFieldVal(e.target.value)}
-              className="mineral-interest-interest"
-            />
+            <InputGroup>
+              <Form.Control
+                placeholder={
+                  tract && tract.interest ? tract.interest : 'interest'
+                }
+                name="interest"
+                value={interestFieldVal}
+                onChange={e => setInterestFieldVal(e.target.value)}
+                className="mineral-interest-interest"
+              />
+              <InputGroup.Append>
+                <InputGroup.Text>%</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
           </Form.Group>
         </Col>
         <Col>&nbsp;</Col>
@@ -73,30 +84,24 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
           </Col>
         </Col>
       </Row>
+
       {tract && tract.npris && tract.npris.length > 0
         ? tract.npris.map(npri => (
-            <Row data-testid={`npri-${npri.id}`} key={npri.id}>
-              <Col>
-                <Icon icon="indent" /> {npri.owner}
-              </Col>
-              <Col>&nbsp;</Col>
-              <Col>{npri.interest}</Col>
-              <Col>{npri.lease}</Col>
-              <Col>
-                <Button data-testid={`npriRemove-${npri.id}`}>
-                  <Icon icon="remove" />
-                </Button>
-              </Col>
-            </Row>
+            <NPRIItem
+              onChange={onChange}
+              npri={npri}
+              tract={tract}
+              key={npri.id}
+            />
           ))
         : null}
 
       {status === 'new' ? (
         <Row>
-          <Col>
+          <Col md={{ span: 1, offset: 9 }}>
             <Button
+              variant="success"
               onClick={() => {
-                //TODO: add actual NPRIs instead of the empty array
                 onChange(
                   'addMI',
                   uuidv4(),
@@ -114,10 +119,30 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             </Button>
           </Col>
           <Col>
-            <Button onClick={() => onCancelClick()}>Cancel</Button>
+            <Button variant="danger" onClick={() => onCancelClick()}>
+              Cancel
+            </Button>
           </Col>
         </Row>
-      ) : null}
+      ) : (
+        <Fragment>
+          {isAddNewNPRIShowing ? (
+            <Card style={{ padding: '10px' }}>
+              <h3>Add New NPRI</h3>
+              <NPRIItem
+                status="new"
+                onChange={onChange}
+                onCancelClick={() => setIsAddNewNPRIShowing(false)}
+                tract={tract}
+              />
+            </Card>
+          ) : (
+            <Button onClick={() => setIsAddNewNPRIShowing(true)}>
+              Add NPRI
+            </Button>
+          )}
+        </Fragment>
+      )}
     </div>
   );
 };

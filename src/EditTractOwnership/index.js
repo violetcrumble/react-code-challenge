@@ -8,14 +8,14 @@ import Card from 'react-bootstrap/Card';
 
 import MineralInterestItem from './mineralinterestitem.js';
 
-const EditTractOwnership = ({ value = [], onChange }) => {
+const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
   const [
     isAddNewMineralInterestShowing,
     setIsAddNewMineralInterestShowing,
   ] = useState(false);
 
   return (
-    <Container>
+    <Container className="mineral-interests-listing">
       <Row>
         <Col>Owner</Col>
         <Col>Mineral Interest</Col>
@@ -37,7 +37,7 @@ const EditTractOwnership = ({ value = [], onChange }) => {
       )}
 
       {isAddNewMineralInterestShowing ? (
-        <Card>
+        <Card style={{ padding: '10px' }}>
           <h3>Add New Mineral Interest</h3>
           <MineralInterestItem
             status="new"

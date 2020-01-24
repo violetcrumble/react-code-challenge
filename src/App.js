@@ -34,14 +34,16 @@ function App() {
     if (action === 'addMI') {
       setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
     }
+    if (action === 'addNPRI') {
+      //find the tract with the ID passed in
+      //add the NPRIs to that one
+      console.log('addNPRI');
+    }
     if (action === 'removeMI') {
       setTracts(tracts.filter(item => item.id !== id));
-      console.log('remove');
-      return tracts;
-    }
-    if (action === 'addNPRI') {
     }
     if (action === 'removeNPRI') {
+      console.log('removeNPRI');
     }
   };
 
