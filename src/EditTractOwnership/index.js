@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import uuidv4 from 'uuid/v4';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,9 +15,11 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
     setIsAddNewMineralInterestShowing,
   ] = useState(false);
 
+  const [pageKey, setPageKey] = useState(uuidv4());
+
   const [tracts, setTracts] = useState(value);
 
-  useEffect(tracts => {
+  useEffect(() => {
     onChange(tracts);
   });
 
@@ -29,6 +32,7 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
   };
 
   const addNPRI = (id, npris) => {
+    setPageKey(uuidv4());
     let tractsCopy = tracts;
 
     tractsCopy.filter(item => item.id === id)[0].npris.push(npris);
@@ -74,20 +78,28 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
       )}
 
       {isAddNewMineralInterestShowing ? (
-        <Card style={{ padding: '10px' }}>
-          <h3>Add New Mineral Interest</h3>
-          <MineralInterestItem
-            status="new"
-            onChange={onChange}
-            addMI={addMI}
-            removeMI={removeMI}
-            addNPRI={addNPRI}
-            removeNPRI={removeNPRI}
-            onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
-          />
+        <Card>
+          <Card.Header>Add New Mineral Interest</Card.Header>
+          <Card.Body>
+            <Card.Text>
+              <MineralInterestItem
+                status="new"
+                onChange={onChange}
+                addMI={addMI}
+                removeMI={removeMI}
+                addNPRI={addNPRI}
+                removeNPRI={removeNPRI}
+                onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
+              />
+            </Card.Text>
+          </Card.Body>
         </Card>
       ) : (
-        <Button onClick={() => setIsAddNewMineralInterestShowing(true)}>
+        <Button
+          size="lg"
+          block
+          onClick={() => setIsAddNewMineralInterestShowing(true)}
+        >
           Add Mineral Interest
         </Button>
       )}

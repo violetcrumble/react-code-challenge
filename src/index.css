@@ -5,9 +5,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e6e6e6 !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  max-width: 2000px !important;
+}
+.navbar {
+  padding-top: 20px !important;
+}
+.btn-primary {
+  color: #00ff85 !important;
+  background-color: #000 !important; 
+  border: none !important;
+  font-weight: bold;
+}
+
+.mineral-interest-item-outer {
+  border-top: solid 1px #000;
+  padding-top: 20px;
+}
+
+.add-npri-button {
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
