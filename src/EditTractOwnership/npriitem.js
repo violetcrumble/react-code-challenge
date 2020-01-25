@@ -8,7 +8,14 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
+const NPRIItem = ({
+  addNPRI,
+  removeNPRI,
+  npri,
+  tract,
+  status,
+  onCancelClick,
+}) => {
   const [npriInterestFieldVal, setNpriInterestFieldVal] = useState('');
   const [npriOwnerFieldVal, setNpriOwnerFieldVal] = useState('');
 
@@ -50,7 +57,7 @@ const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
             <Button
               data-testid={`npriRemove-${npri.id}`}
               onClick={() => {
-                onChange('removeNPRI', tract.id);
+                removeNPRI(tract.id);
               }}
             >
               <Icon icon="remove" />
@@ -64,18 +71,11 @@ const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
               <Button
                 variant="success"
                 onClick={() => {
-                  onChange(
-                    'addNPRI',
-                    tract.id,
-                    tract.owner,
-                    tract.interest,
-                    tract.lease,
-                    {
-                      id: uuidv4(),
-                      owner: npriOwnerFieldVal,
-                      interest: npriInterestFieldVal,
-                    }
-                  );
+                  addNPRI(tract.id, tract.owner, tract.interest, tract.lease, {
+                    id: uuidv4(),
+                    owner: npriOwnerFieldVal,
+                    interest: npriInterestFieldVal,
+                  });
                   setNpriOwnerFieldVal('');
                   setNpriInterestFieldVal('');
                 }}

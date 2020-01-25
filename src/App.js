@@ -30,28 +30,29 @@ function App() {
     },
   ]);
 
-  const onChange = (action, id, owner, interest, lease, npris) => {
-    if (action === 'addMI') {
-      setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
-    }
-    if (action === 'addNPRI') {
-      let tractsCopy = Object.assign({}, tracts);
-      let newNPRIs = Object.assign({}, npris);
-      Object.values(tractsCopy)
-        .filter(item => item.id === id)[0]
-        .npris.push(newNPRIs);
-      setTracts([...tracts, tractsCopy]);
-    }
-    if (action === 'removeMI') {
-      setTracts(tracts.filter(item => item.id !== id));
-    }
-    if (action === 'removeNPRI') {
-      let tractsCopy = Object.assign({}, tracts);
-      Object.values(tractsCopy)
-        .filter(item => item.id === id)[0]
-        .npris.pop();
-      setTracts([...tracts, tractsCopy]);
-    }
+  const addMI = (id, owner, interest, lease, npris) => {
+    setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
+  };
+
+  const removeMI = id => {
+    setTracts(tracts.filter(item => item.id !== id));
+  };
+
+  const addNPRI = (id, npris) => {
+    let tractsCopy = Object.assign({}, tracts);
+    let newNPRIs = Object.assign({}, npris);
+    Object.values(tractsCopy)
+      .filter(item => item.id === id)[0]
+      .npris.push(newNPRIs);
+    setTracts([...tracts, tractsCopy]);
+  };
+
+  const removeNPRI = id => {
+    let tractsCopy = Object.assign({}, tracts);
+    Object.values(tractsCopy)
+      .filter(item => item.id === id)[0]
+      .npris.pop();
+    setTracts([...tracts, tractsCopy]);
   };
 
   return (
@@ -67,7 +68,13 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <EditTractOwnership value={tracts} onChange={onChange} />
+          <EditTractOwnership
+            value={tracts}
+            addMI={addMI}
+            removeMI={removeMI}
+            addNPRI={addNPRI}
+            removeNPRI={removeNPRI}
+          />
         </Col>
       </Row>
     </Container>

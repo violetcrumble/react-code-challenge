@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,11 +8,22 @@ import Card from 'react-bootstrap/Card';
 
 import MineralInterestItem from './mineralinterestitem.js';
 
-const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
+const EditTractOwnership = ({
+  value = [],
+  onChange = () => {},
+  addMI,
+  removeMI,
+  addNPRI,
+  removeNPRI,
+}) => {
   const [
     isAddNewMineralInterestShowing,
     setIsAddNewMineralInterestShowing,
   ] = useState(false);
+
+  useEffect(() => {
+    onChange(value);
+  });
 
   return (
     <Container className="mineral-interests-listing">
@@ -27,7 +38,14 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
       {value.length > 0 ? (
         value.map(tract => (
           <Fragment key={tract.id}>
-            <MineralInterestItem tract={tract} onChange={onChange} />
+            <MineralInterestItem
+              tract={tract}
+              onChange={onChange}
+              addMI={addMI}
+              removeMI={removeMI}
+              addNPRI={addNPRI}
+              removeNPRI={removeNPRI}
+            />
           </Fragment>
         ))
       ) : (
@@ -42,6 +60,10 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
           <MineralInterestItem
             status="new"
             onChange={onChange}
+            addMI={addMI}
+            removeMI={removeMI}
+            addNPRI={addNPRI}
+            removeNPRI={removeNPRI}
             onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
           />
         </Card>

@@ -11,7 +11,15 @@ import Card from 'react-bootstrap/Card';
 
 import NPRIItem from './npriitem';
 
-const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
+const MineralInterestItem = ({
+  tract,
+  status,
+  addMI,
+  removeMI,
+  addNPRI,
+  removeNPRI,
+  onCancelClick,
+}) => {
   const [ownerFieldVal, setOwnerFieldVal] = useState('');
   const [interestFieldVal, setInterestFieldVal] = useState('');
   const [leaseFieldVal, setLeaseFieldVal] = useState('');
@@ -75,7 +83,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               <Button
                 data-testid={`mineralInterest-${tract.id}.remove`}
                 onClick={() => {
-                  onChange('removeMI', tract.id);
+                  removeMI(tract.id);
                 }}
               >
                 <Icon icon="remove" />
@@ -88,7 +96,8 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
       {tract && tract.npris && tract.npris.length > 0
         ? tract.npris.map(npri => (
             <NPRIItem
-              onChange={onChange}
+              addNPRI={addNPRI}
+              removeNPRI={removeNPRI}
               npri={npri}
               tract={tract}
               key={npri.id}
@@ -102,8 +111,7 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
             <Button
               variant="success"
               onClick={() => {
-                onChange(
-                  'addMI',
+                addMI(
                   uuidv4(),
                   ownerFieldVal,
                   interestFieldVal,
@@ -131,9 +139,10 @@ const MineralInterestItem = ({ tract, status, onChange, onCancelClick }) => {
               <h3>Add New NPRI</h3>
               <NPRIItem
                 status="new"
-                onChange={onChange}
                 onCancelClick={() => setIsAddNewNPRIShowing(false)}
                 tract={tract}
+                addNPRI={addNPRI}
+                removeNPRI={removeNPRI}
               />
             </Card>
           ) : (
