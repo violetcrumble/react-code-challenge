@@ -39,9 +39,12 @@ const MineralInterestItem = ({
             <Form.Control
               placeholder={tract && tract.owner ? tract.owner : 'owner'}
               name="owner"
-              value={ownerFieldVal}
+              value={tract && tract.owner ? tract.owner : ownerFieldVal}
               onChange={e => setOwnerFieldVal(e.target.value)}
               className="mineral-interest-owner"
+              data-testid={
+                tract && tract.id ? `mineralInterest-${tract.id}.owner` : null
+              }
             />
           </Form.Group>
         </Col>
@@ -56,6 +59,11 @@ const MineralInterestItem = ({
                 value={interestFieldVal}
                 onChange={e => setInterestFieldVal(e.target.value)}
                 className="mineral-interest-interest"
+                data-testid={
+                  tract && tract.id
+                    ? `mineralInterest-${tract.id}.interest`
+                    : null
+                }
               />
               <InputGroup.Append>
                 <InputGroup.Text>%</InputGroup.Text>
@@ -72,6 +80,9 @@ const MineralInterestItem = ({
               value={leaseFieldVal}
               onChange={e => setLeaseFieldVal(e.target.value)}
               className="mineral-interest-lease"
+              data-testid={
+                tract && tract.id ? `mineralInterest-${tract.id}.lease` : null
+              }
             />
           </Form.Group>
         </Col>
@@ -147,7 +158,7 @@ const MineralInterestItem = ({
             </Card>
           ) : (
             <Button onClick={() => setIsAddNewNPRIShowing(true)}>
-              Add NPRI
+              Add NPRI to {tract.owner}
             </Button>
           )}
         </Fragment>

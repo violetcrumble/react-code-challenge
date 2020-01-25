@@ -8,22 +8,41 @@ import Card from 'react-bootstrap/Card';
 
 import MineralInterestItem from './mineralinterestitem.js';
 
-const EditTractOwnership = ({
-  value = [],
-  onChange = () => {},
-  addMI,
-  removeMI,
-  addNPRI,
-  removeNPRI,
-}) => {
+const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
   const [
     isAddNewMineralInterestShowing,
     setIsAddNewMineralInterestShowing,
   ] = useState(false);
 
-  useEffect(() => {
-    onChange(value);
+  const [tracts, setTracts] = useState(value);
+
+  useEffect(tracts => {
+    onChange(tracts);
   });
+
+  const addMI = (id, owner, interest, lease, npris) => {
+    setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
+  };
+
+  const removeMI = id => {
+    setTracts(tracts.filter(item => item.id !== id));
+  };
+
+  const addNPRI = (id, npris) => {
+    let tractsCopy = tracts;
+
+    tractsCopy.filter(item => item.id === id)[0].npris.push(npris);
+
+    setTracts(...[tractsCopy]);
+  };
+
+  const removeNPRI = id => {
+    let tractsCopy = Object.assign({}, tracts);
+    Object.values(tractsCopy)
+      .filter(item => item.id === id)[0]
+      .npris.pop();
+    setTracts([...tracts, tractsCopy]);
+  };
 
   return (
     <Container className="mineral-interests-listing">
@@ -35,8 +54,8 @@ const EditTractOwnership = ({
         <Col>&nbsp;</Col>
       </Row>
 
-      {value.length > 0 ? (
-        value.map(tract => (
+      {tracts.length > 0 ? (
+        tracts.map(tract => (
           <Fragment key={tract.id}>
             <MineralInterestItem
               tract={tract}

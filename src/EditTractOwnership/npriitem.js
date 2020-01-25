@@ -66,12 +66,12 @@ const NPRIItem = ({
         </Col>
 
         {status === 'new' ? (
-          <Row>
+          <Row key={`npri${tract.id}`}>
             <Col md={{ span: 1, offset: 9 }}>
               <Button
                 variant="success"
                 onClick={() => {
-                  addNPRI(tract.id, tract.owner, tract.interest, tract.lease, {
+                  addNPRI(tract.id, {
                     id: uuidv4(),
                     owner: npriOwnerFieldVal,
                     interest: npriInterestFieldVal,
