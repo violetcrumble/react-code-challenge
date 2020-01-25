@@ -10,7 +10,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
   const [npriInterestFieldVal, setNpriInterestFieldVal] = useState('');
-  const [npriLeaseFieldVal, setNpriLeaseFieldVal] = useState('');
   const [npriOwnerFieldVal, setNpriOwnerFieldVal] = useState('');
 
   return (
@@ -31,7 +30,7 @@ const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
           <InputGroup>
             <Form.Control
               placeholder={
-                npri && npri.interest ? npri.interst : 'npri interest'
+                npri && npri.interest ? npri.interest : 'npri interest'
               }
               name="npri-interest"
               value={npriInterestFieldVal}
@@ -43,15 +42,7 @@ const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
             </InputGroup.Append>
           </InputGroup>
         </Col>
-        <Col>
-          <Form.Control
-            placeholder={npri && npri.lease ? npri.lease : 'npri lease'}
-            name="npri-lease"
-            value={npriLeaseFieldVal}
-            onChange={e => setNpriLeaseFieldVal(e.target.value)}
-            className="npri-lease"
-          />
-        </Col>
+        <Col>&nbsp;</Col>
         <Col>
           {status === 'new' ? (
             ' '
@@ -79,22 +70,14 @@ const NPRIItem = ({ onChange, npri, tract, status, onCancelClick }) => {
                     tract.owner,
                     tract.interest,
                     tract.lease,
-                    [
-                      {
-                        id: uuidv4(),
-                        owner: 'Leia Organa',
-                        interest: 0.45,
-                      },
-                      {
-                        id: uuidv4(),
-                        owner: 'Han Solo',
-                        interest: 0.15,
-                      },
-                    ]
+                    {
+                      id: uuidv4(),
+                      owner: npriOwnerFieldVal,
+                      interest: npriInterestFieldVal,
+                    }
                   );
                   setNpriOwnerFieldVal('');
                   setNpriInterestFieldVal('');
-                  setNpriLeaseFieldVal('');
                 }}
               >
                 Add

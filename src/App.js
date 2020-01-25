@@ -35,15 +35,22 @@ function App() {
       setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
     }
     if (action === 'addNPRI') {
-      //find the tract with the ID passed in
-      //add the NPRIs to that one
-      console.log('addNPRI');
+      let tractsCopy = Object.assign({}, tracts);
+      let newNPRIs = Object.assign({}, npris);
+      Object.values(tractsCopy)
+        .filter(item => item.id === id)[0]
+        .npris.push(newNPRIs);
+      setTracts([...tracts, tractsCopy]);
     }
     if (action === 'removeMI') {
       setTracts(tracts.filter(item => item.id !== id));
     }
     if (action === 'removeNPRI') {
-      console.log('removeNPRI');
+      let tractsCopy = Object.assign({}, tracts);
+      Object.values(tractsCopy)
+        .filter(item => item.id === id)[0]
+        .npris.pop();
+      setTracts([...tracts, tractsCopy]);
     }
   };
 
