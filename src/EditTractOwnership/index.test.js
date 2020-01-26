@@ -159,6 +159,8 @@ describe('EditTractOwnership', () => {
     const addNPRI = screen.getByText('Add');
     fireEvent.click(addNPRI);
 
+    //TODO: figure out why these IDs aren't on the item when this test runs
+    //I can see them in browser after hitting the add button
     const npriOwnerInput = screen.getByTestId(`npri-${npriId}.owner`);
     fireEvent.change(npriOwnerInput, { target: { value: 'Han Solo' } });
 

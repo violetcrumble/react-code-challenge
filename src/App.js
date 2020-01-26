@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react';
-import { Col, Container, Navbar, Nav, Row } from 'react-bootstrap';
 import uuidv4 from 'uuid/v4';
 
-import Logo from './primary_logo.svg';
 import 'bootstrap/dist/css/bootstrap.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+
 import './App.css';
+import Logo from './primary_logo.svg';
 
 import EditTractOwnership from './EditTractOwnership';
 

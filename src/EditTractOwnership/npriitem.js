@@ -24,10 +24,10 @@ const NPRIItem = ({
       <Row data-testid={npri ? `npri-${npri.id}` : 'npriRowAdd'}>
         <Col>
           <Row>
-            <Col xs={1}>
+            <Col xs={3}>
               <Icon icon="indent" />
             </Col>
-            <Col xs={11}>
+            <Col xs={9}>
               <Form.Control
                 placeholder={npri && npri.owner ? npri.owner : 'npri owner'}
                 name="npri-owner"
