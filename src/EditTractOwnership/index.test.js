@@ -127,9 +127,9 @@ describe('EditTractOwnership', () => {
 
   test('Should add NPRI row', () => {
     // changed this test b/c of the way I separated
-    // mineral interest adding and npri adding
+    // MI adding and NPRI adding
     // NPRI adding is not available unless you have an MI
-    // if I started over, I would not do it this way.
+    // if I started over, I would not do it this way. I'd let the user edit everything at once
     // I didn't like the fact that I had to remove everything dealing with MIs here
 
     let result;
@@ -158,8 +158,6 @@ describe('EditTractOwnership', () => {
 
     const addNPRI = screen.getByText('Add');
     fireEvent.click(addNPRI);
-
-    const npriId = result[0].npris[0].id;
 
     const npriOwnerInput = screen.getByTestId(`npri-${npriId}.owner`);
     fireEvent.change(npriOwnerInput, { target: { value: 'Han Solo' } });

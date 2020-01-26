@@ -23,17 +23,6 @@ const MineralInterestItem = ({
   const [ownerFieldVal, setOwnerFieldVal] = useState('');
   const [interestFieldVal, setInterestFieldVal] = useState('');
   const [leaseFieldVal, setLeaseFieldVal] = useState('');
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = event => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
-  };
 
   const [isAddNewNPRIShowing, setIsAddNewNPRIShowing] = useState(false);
 
@@ -160,15 +149,13 @@ const MineralInterestItem = ({
             <Card>
               <Card.Header>Add New NPRI</Card.Header>
               <Card.Body>
-                <Card.Text>
-                  <NPRIItem
-                    status="new"
-                    onCancelClick={() => setIsAddNewNPRIShowing(false)}
-                    tract={tract}
-                    addNPRI={addNPRI}
-                    removeNPRI={removeNPRI}
-                  />
-                </Card.Text>
+                <NPRIItem
+                  status="new"
+                  onCancelClick={() => setIsAddNewNPRIShowing(false)}
+                  tract={tract}
+                  addNPRI={addNPRI}
+                  removeNPRI={removeNPRI}
+                />
               </Card.Body>
             </Card>
           ) : (
