@@ -63,7 +63,7 @@ const NPRIItem = ({
             <Button
               data-testid={`npriRemove-${npri.id}`}
               onClick={() => {
-                removeNPRI(tract.id);
+                removeNPRI(tract.id, npri.id);
               }}
             >
               <Icon icon="remove" />

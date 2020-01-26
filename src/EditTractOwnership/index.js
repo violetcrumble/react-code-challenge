@@ -39,12 +39,12 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
     setTracts(...[tractsCopy]);
   };
 
-  const removeNPRI = id => {
-    let tractsCopy = Object.assign({}, tracts);
-    Object.values(tractsCopy)
-      .filter(item => item.id === id)[0]
-      .npris.pop();
-    setTracts([...tracts, tractsCopy]);
+  const removeNPRI = (tractId, npriId) => {
+    // let tractsCopy = Object.assign({}, tracts);
+    // Object.values(tractsCopy)
+    //   .filter(item => item.id === id)[0]
+    //   .npris.pop();
+    // setTracts([...tracts, tractsCopy]);
   };
 
   return (
@@ -80,17 +80,15 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
         <Card>
           <Card.Header>Add New Mineral Interest</Card.Header>
           <Card.Body>
-            <Card.Text>
-              <MineralInterestItem
-                status="new"
-                onChange={onChange}
-                addMI={addMI}
-                removeMI={removeMI}
-                addNPRI={addNPRI}
-                removeNPRI={removeNPRI}
-                onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
-              />
-            </Card.Text>
+            <MineralInterestItem
+              status="new"
+              onChange={onChange}
+              addMI={addMI}
+              removeMI={removeMI}
+              addNPRI={addNPRI}
+              removeNPRI={removeNPRI}
+              onCancelClick={() => setIsAddNewMineralInterestShowing(false)}
+            />
           </Card.Body>
         </Card>
       ) : (
