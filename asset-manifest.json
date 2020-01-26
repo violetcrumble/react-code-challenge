@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/react-code-challenge/static/css/main.d1b05096.chunk.css",
-    "main.js": "/react-code-challenge/static/js/main.e591cd73.chunk.js",
-    "main.js.map": "/react-code-challenge/static/js/main.e591cd73.chunk.js.map",
+    "main.css": "/react-code-challenge/static/css/main.24cdcb49.chunk.css",
+    "main.js": "/react-code-challenge/static/js/main.12c57f3a.chunk.js",
+    "main.js.map": "/react-code-challenge/static/js/main.12c57f3a.chunk.js.map",
     "runtime-main.js": "/react-code-challenge/static/js/runtime-main.2052a404.js",
     "runtime-main.js.map": "/react-code-challenge/static/js/runtime-main.2052a404.js.map",
     "static/css/2.67123b20.chunk.css": "/react-code-challenge/static/css/2.67123b20.chunk.css",
-    "static/js/2.c6222d4c.chunk.js": "/react-code-challenge/static/js/2.c6222d4c.chunk.js",
-    "static/js/2.c6222d4c.chunk.js.map": "/react-code-challenge/static/js/2.c6222d4c.chunk.js.map",
+    "static/js/2.2aff35bf.chunk.js": "/react-code-challenge/static/js/2.2aff35bf.chunk.js",
+    "static/js/2.2aff35bf.chunk.js.map": "/react-code-challenge/static/js/2.2aff35bf.chunk.js.map",
     "index.html": "/react-code-challenge/index.html",
-    "precache-manifest.3e933be26ce4b44e32b6a91059637897.js": "/react-code-challenge/precache-manifest.3e933be26ce4b44e32b6a91059637897.js",
+    "precache-manifest.83b74852a36920a8ac91df24a1e79c41.js": "/react-code-challenge/precache-manifest.83b74852a36920a8ac91df24a1e79c41.js",
     "service-worker.js": "/react-code-challenge/service-worker.js",
     "static/css/2.67123b20.chunk.css.map": "/react-code-challenge/static/css/2.67123b20.chunk.css.map",
-    "static/css/main.d1b05096.chunk.css.map": "/react-code-challenge/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.c6222d4c.chunk.js.LICENSE": "/react-code-challenge/static/js/2.c6222d4c.chunk.js.LICENSE"
+    "static/css/main.24cdcb49.chunk.css.map": "/react-code-challenge/static/css/main.24cdcb49.chunk.css.map",
+    "static/js/2.2aff35bf.chunk.js.LICENSE": "/react-code-challenge/static/js/2.2aff35bf.chunk.js.LICENSE",
+    "static/media/primary_logo.svg": "/react-code-challenge/static/media/primary_logo.13cf3168.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2052a404.js",
     "static/css/2.67123b20.chunk.css",
-    "static/js/2.c6222d4c.chunk.js",
-    "static/css/main.d1b05096.chunk.css",
-    "static/js/main.e591cd73.chunk.js"
+    "static/js/2.2aff35bf.chunk.js",
+    "static/css/main.24cdcb49.chunk.css",
+    "static/js/main.12c57f3a.chunk.js"
   ]
 }
