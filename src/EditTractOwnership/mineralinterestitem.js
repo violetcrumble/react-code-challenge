@@ -23,11 +23,22 @@ const MineralInterestItem = ({
   const [ownerFieldVal, setOwnerFieldVal] = useState('');
   const [interestFieldVal, setInterestFieldVal] = useState('');
   const [leaseFieldVal, setLeaseFieldVal] = useState('');
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = event => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
 
   const [isAddNewNPRIShowing, setIsAddNewNPRIShowing] = useState(false);
 
   return (
-    <div style={{ borderBottom: 'dotted 1px gray', marginBottom: '20px' }}>
+    <div className="mineral-interests-wrapper">
       <Row
         className="mineral-interest-item"
         data-testid={
@@ -146,18 +157,25 @@ const MineralInterestItem = ({
       ) : (
         <Fragment>
           {isAddNewNPRIShowing ? (
-            <Card style={{ padding: '10px' }}>
-              <h3>Add New NPRI</h3>
-              <NPRIItem
-                status="new"
-                onCancelClick={() => setIsAddNewNPRIShowing(false)}
-                tract={tract}
-                addNPRI={addNPRI}
-                removeNPRI={removeNPRI}
-              />
+            <Card>
+              <Card.Header>Add New NPRI</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <NPRIItem
+                    status="new"
+                    onCancelClick={() => setIsAddNewNPRIShowing(false)}
+                    tract={tract}
+                    addNPRI={addNPRI}
+                    removeNPRI={removeNPRI}
+                  />
+                </Card.Text>
+              </Card.Body>
             </Card>
           ) : (
-            <Button onClick={() => setIsAddNewNPRIShowing(true)}>
+            <Button
+              className="add-npri-button"
+              onClick={() => setIsAddNewNPRIShowing(true)}
+            >
               Add NPRI to {tract.owner}
             </Button>
           )}

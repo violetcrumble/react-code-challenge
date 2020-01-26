@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -49,7 +48,7 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
   };
 
   return (
-    <Container className="mineral-interests-listing">
+    <Fragment>
       <Row>
         <Col>Owner</Col>
         <Col>Mineral Interest</Col>
@@ -98,12 +97,13 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
         <Button
           size="lg"
           block
+          className="add-mi-button"
           onClick={() => setIsAddNewMineralInterestShowing(true)}
         >
           Add Mineral Interest
         </Button>
       )}
-    </Container>
+    </Fragment>
   );
 };
 
