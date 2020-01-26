@@ -39,12 +39,14 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
     setTracts(...[tractsCopy]);
   };
 
-  const removeNPRI = (tractId, npriId) => {
-    // let tractsCopy = Object.assign({}, tracts);
-    // Object.values(tractsCopy)
-    //   .filter(item => item.id === id)[0]
-    //   .npris.pop();
-    // setTracts([...tracts, tractsCopy]);
+  const removeNPRI = tractId => {
+    setPageKey(uuidv4());
+    let newNpris = Object.assign({}, tracts);
+    newNpris = Object.values(newNpris)
+      .filter(item => item.id === tractId)[0]
+      .npris.pop();
+    let tractsCopy = tracts;
+    setTracts(tractsCopy);
   };
 
   return (

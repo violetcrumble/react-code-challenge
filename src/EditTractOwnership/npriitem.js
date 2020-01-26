@@ -34,6 +34,7 @@ const NPRIItem = ({
                 value={npriOwnerFieldVal}
                 onChange={e => setNpriOwnerFieldVal(e.target.value)}
                 className="npri-owner"
+                data-testid={npri && npri.owner ? `npri-${npri.id}.owner` : ''}
               />
             </Col>
           </Row>
@@ -49,6 +50,9 @@ const NPRIItem = ({
               value={npriInterestFieldVal}
               onChange={e => setNpriInterestFieldVal(e.target.value)}
               className="npri-interest"
+              data-testid={
+                npri && npri.interest ? `npri-${npri.id}.interest` : ''
+              }
             />
             <InputGroup.Append>
               <InputGroup.Text>%</InputGroup.Text>
@@ -61,7 +65,7 @@ const NPRIItem = ({
             ' '
           ) : (
             <Button
-              data-testid={`npriRemove-${npri.id}`}
+              data-testid={`npri-${npri.id}.remove`}
               onClick={() => {
                 removeNPRI(tract.id, npri.id);
               }}
