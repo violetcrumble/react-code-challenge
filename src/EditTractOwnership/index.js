@@ -20,7 +20,7 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
 
   useEffect(() => {
     onChange(tracts);
-  });
+  }, [tracts]);
 
   const addMI = (id, owner, interest, lease, npris) => {
     setTracts([...tracts, ...[{ id, owner, interest, lease, npris }]]);
@@ -36,7 +36,7 @@ const EditTractOwnership = ({ value = [], onChange = () => {} }) => {
 
     tractsCopy.filter(item => item.id === id)[0].npris.push(npris);
 
-    setTracts(...[tractsCopy]);
+    setTracts(tractsCopy);
   };
 
   const removeNPRI = tractId => {

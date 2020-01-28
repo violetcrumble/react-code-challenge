@@ -214,6 +214,11 @@ describe('EditTractOwnership', () => {
             owner: 'Han Solo',
             interest: '10',
           },
+          {
+            id: uuidv4(),
+            owner: 'Another NPRI',
+            interest: '11',
+          },
         ],
       },
       {
